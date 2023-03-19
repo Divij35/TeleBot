@@ -78,7 +78,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 bot = telegram.Bot(token=os.getenv("BOT_TOKEN"))
-updater = Updater(os.getenv("BOT_TOKEN"), use_context=True, request_kwargs={'timeout': 60})
+updater = Updater(os.getenv("BOT_TOKEN"), use_context=True)
 
 def send_reminder(activity, start_time):
     now = datetime.datetime.now()
