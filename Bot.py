@@ -71,11 +71,14 @@ import telegram
 import os
 import threading
 
+# Set up the command handlers
+from telegram.ext import CommandHandler, Updater
+
 from dotenv import load_dotenv
 load_dotenv()
 
 bot = telegram.Bot(token=os.getenv("BOT_TOKEN"))
-
+updater = Updater(os.getenv("BOT_TOKEN"), use_context=True, request_kwargs={'timeout': 60})
 
 def send_reminder(activity, start_time):
     now = datetime.datetime.now()
@@ -131,15 +134,12 @@ def show(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text="There is no schedule for today.")
 
 
-# Set up the command handlers
-from telegram.ext import CommandHandler, Updater
 
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 reminder_handler = CommandHandler('reminder', reminder)
 show_schedule = CommandHandler('show', show)
 
-updater = Updater(os.getenv("BOT_TOKEN"), use_context=True)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
