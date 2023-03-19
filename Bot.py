@@ -68,10 +68,13 @@ schedule = {
 import datetime
 import time
 import telegram
-import config
+import os
 import threading
+from dotenv import load_dotenv
 
-bot = telegram.Bot(token=config.TOKEN)
+load_dotenv()
+
+bot = telegram.Bot(token=os.environ.get('BOT_TOKEN'))
 
 
 def send_reminder(activity, start_time):
@@ -136,7 +139,7 @@ help_handler = CommandHandler('help', help)
 reminder_handler = CommandHandler('reminder', reminder)
 show_schedule = CommandHandler('show', show)
 
-updater = Updater(config.TOKEN, use_context=True)
+updater = Updater(os.environ.get('BOT_TOKEN'), use_context=True)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
