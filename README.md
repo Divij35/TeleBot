@@ -52,4 +52,4 @@ Once the bot is running, you can interact with it through the following commands
 
 ## Runtime Configuration
 This project uses python-3.10 as the python-telegram-bot dependencies isn't working in python-3.11.To ensure the correct Python version is used, a runtime.txt file has been included in the repository. The contents of the runtime.txt file specify the Python version as python-3.10. It is recommended to set up your Python environment using this version to avoid any compatibility issues.
-** Make sure you have Python 3.10 installed before proceeding with the installation steps mentioned above. **
+**Make sure you have Python 3.10 installed before proceeding with the installation steps mentioned above.**
